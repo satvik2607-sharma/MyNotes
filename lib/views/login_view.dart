@@ -16,11 +16,13 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   late final TextEditingController _email;
   late final TextEditingController _password;
+  bool passwordVisible = false;
 
   @override
   void initState() {
     _email = TextEditingController();
     _password = TextEditingController();
+    passwordVisible = true;
     super.initState();
   }
 
@@ -68,11 +70,22 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 TextField(
                   controller: _password,
-                  obscureText: true,
+                  obscureText: passwordVisible,
                   enableSuggestions: false,
                   autocorrect: false,
-                  decoration:
-                      const InputDecoration(hintText: 'Enter your password here'),
+                  decoration: InputDecoration(
+                      hintText: 'Enter your password here',
+                      suffixIcon: IconButton(
+                          icon: Icon(
+                            passwordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              passwordVisible = !passwordVisible;
+                            });
+                          })),
                 ),
                 ElevatedButton(
                     onPressed: () async {

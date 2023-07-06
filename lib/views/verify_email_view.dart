@@ -19,8 +19,7 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
         title: const Text('Verify email'),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
+        child: Column(children: [
           const Text(
               "We've have sent you an email verification. Please open it to verify your account"),
           const Text(
@@ -31,13 +30,13 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
                     .read<AuthBloc>()
                     .add(const AuthEventSendEmailVerification());
               },
-              child: const Text('Send email verification')),
+              child: const Text('Resend email verification')),
           TextButton(
               onPressed: () async {
                 await AuthService.firebase().logOut();
                 context.read<AuthBloc>().add(AuthEventLogOut());
               },
-              child: const Text('Restart')),
+              child: const Text('Back')),
         ]),
       ),
     );

@@ -17,11 +17,13 @@ class RegisterView extends StatefulWidget {
 class _RegisterViewState extends State<RegisterView> {
   late final TextEditingController _email;
   late final TextEditingController _password;
+  bool passwordVisible = false;
 
   @override
   void initState() {
     _email = TextEditingController();
     _password = TextEditingController();
+    passwordVisible = true;
     super.initState();
   }
 
@@ -66,16 +68,32 @@ class _RegisterViewState extends State<RegisterView> {
                   keyboardType: TextInputType.emailAddress,
                   enableSuggestions: false,
                   autocorrect: false,
-                  decoration:
-                      const InputDecoration(hintText: 'Enter your email here'),
+                  decoration: const InputDecoration(
+                    hintText: 'Enter your email here',
+                  ),
                 ),
                 TextField(
                   controller: _password,
-                  obscureText: true,
+                  obscureText: passwordVisible,
                   enableSuggestions: false,
                   autocorrect: false,
-                  decoration:
-                      const InputDecoration(hintText: 'Enter your password here'),
+                  decoration: InputDecoration(
+                      hintText: 'Enter your password here',
+                      helperText: 'Password must contain atleast 6 characters',
+                      helperStyle: const TextStyle(color: Colors.red),
+                      suffixIcon: IconButton(
+                        icon: Icon(passwordVisible
+                            ? Icons.visibility
+                            : Icons.visibility_off),
+                        onPressed: () {
+                          setState(() {
+                            passwordVisible = !passwordVisible;
+                          });
+                        },
+                      )),
+                ),
+                const SizedBox(
+                  height: 15,
                 ),
                 ElevatedButton(
                     onPressed: () async {
