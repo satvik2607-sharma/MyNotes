@@ -55,6 +55,14 @@ class _LoginViewState extends State<LoginView> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                Image.asset(
+                  "assets/icon/icon.png",
+                  width: 200,
+                  height: 200,
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
                 const Text(
                     'Please log in to your account in order to interact with and create notes!'),
                 const SizedBox(
@@ -67,6 +75,9 @@ class _LoginViewState extends State<LoginView> {
                   autocorrect: false,
                   decoration:
                       const InputDecoration(hintText: 'Enter your email here'),
+                ),
+                const SizedBox(
+                  height: 15,
                 ),
                 TextField(
                   controller: _password,

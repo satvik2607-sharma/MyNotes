@@ -72,6 +72,9 @@ class _RegisterViewState extends State<RegisterView> {
                     hintText: 'Enter your email here',
                   ),
                 ),
+                const SizedBox(
+                  height: 15,
+                ),
                 TextField(
                   controller: _password,
                   obscureText: passwordVisible,
@@ -79,7 +82,8 @@ class _RegisterViewState extends State<RegisterView> {
                   autocorrect: false,
                   decoration: InputDecoration(
                       hintText: 'Enter your password here',
-                      helperText: 'Password must contain atleast 6 characters',
+                      helperText:
+                          '**Password must contain atleast 6 characters',
                       helperStyle: const TextStyle(color: Colors.red),
                       suffixIcon: IconButton(
                         icon: Icon(passwordVisible
