@@ -64,12 +64,16 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                     hintText: 'Your email address...',
                   ),
                 ),
+                const SizedBox(
+                  height: 15,
+                ),
                 ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       final email = _controller.text;
                       context
                           .read<AuthBloc>()
                           .add(AuthEventForgotPassword(email: email));
+                      await showPasswordResetSentDialog(context);
                     },
                     child: const Text('Send me password reset link')),
                 TextButton(

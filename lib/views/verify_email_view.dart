@@ -21,7 +21,7 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
       body: SingleChildScrollView(
         child: Column(children: [
           const Text(
-              "We've have sent you an email verification. Please open it to verify your account"),
+              "Dear user, thank you for registering. We've have sent you an email verification. Please open it to verify your account"),
           const Text(
               "If you haven't received the email, click on the button below"),
           TextButton(

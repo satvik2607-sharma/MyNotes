@@ -78,7 +78,7 @@ class _NotesViewState extends State<NotesView> {
                   },
                 );
               } else {
-                return const Text("You don't have any notes yet....");
+                return const Center(child: CircularProgressIndicator());
               }
 
             default:
